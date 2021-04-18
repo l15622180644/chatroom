@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>msg</title>
+</head>
+<body>
+<h1>欢迎进入信箱</h1>
+userID:<span id="id"></span>&nbsp;&nbsp;&nbsp;&nbsp;userName:<span id="name"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;未读信息：&nbsp;&nbsp;<span id="notRead"></span>&nbsp;&nbsp;条
+<br>
+<br>
+<h4>消息记录</h4>
+<div id="msgDiv">
+
+</div>
+</body>
+<script language="JavaScript" src="../js/jquery-1.8.3.js"></script>
+<script language="JavaScript" src="../js/sockjs.min.js"></script>
+<script language="JavaScript" src="../js/stomp.min.js"></script>
+<script>
+    var socket = new SockJS("http://localhost:8084/endpoint1");
+    var stompClient = Stomp.over(socket);
+    stompClient.connect({}, function () {
+        //订阅系统消息
+        stompClient.subscribe("/broadcast/sendMsg", function (result) {
+            var re = JSON.stringify(result);
+            var re1 = eval('(' + re + ')');
+            $('#msgDiv').append("<span>信息ID：" + re1.body + "</span><br>");
+            var notRead = parseInt($('#notRead').text())+1;
+            $('#notRead').text(notRead);
+        });
+        //订阅自己id的消息
+        var id = $('#id').text().trim();
+        stompClient.subscribe("/user/" + id + "/alone/msg", function (result) {
+            var re = JSON.stringify(result);
+            var re1 = eval('(' + re + ')');
+            $('#msgDiv').append("<span>信息ID：" + re1.body + "</span><br>")
+            var notRead = parseInt($('#notRead').text())+1;
+            $('#notRead').text(notRead);
+        })
+    });
+
+    //检查连接状态
+    function checkConnect() {
+        var status = socket.readyState;
+        var msg;
+        if (status == 0) {
+            msg = "正在连接"
+        } else if (status == 1) {
+            msg = "连接成功"
+        } else if (status == 2) {
+            msg = "连接正在关闭"
+        } else if (status == 3) {
+            msg = "连接已关闭"
+        }
+        console.info(msg)
+    }
+
+    //关闭连接
+    function killConnect() {
+        if (stompClient != null) {
+            stompClient.disconnect()
+        }
+    }
+
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+
+    $(document).ready(function () {
+        setInterval(checkConnect, 10000);
+        var id = getUrlParam('id');
+        var name = getUrlParam('name');
+        $('#id').html('&nbsp;&nbsp;' + id);
+        $('#name').html('&nbsp;&nbsp;' + name);
+        notRead(id);
+    });
+
+    window.onunload = function () {
+        killConnect();
+    }
+
+    function notRead(id) {
+        $.ajax({
+            url: "http://localhost:8084/notRead",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Content-Type", "application/json");
+            },
+            data: id,
+            dataType: "json",
+            type: "POST",
+            success: function (result) {
+                var re = JSON.stringify(result);
+                var re1 = eval('(' + re + ')');
+                if (re1.length > 0) {
+                    for (var i = 0; i < re1.length; i++) {
+                        var item = re1[i];
+                        $('#msgDiv').append("<span>信息ID：" + item.id + "</span><br>")
+                    }
+                }
+                $('#notRead').text(re1.length);
+            }
+        })
+    }
+
+</script>
+</html>

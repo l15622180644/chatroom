@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+</head>
+<body>
+
+账号：<input type="text" id="loginName"><br>
+密码：<input type="text" id="password"><br>
+<input type="button" value="登录" onclick="login()">
+
+</body>
+<script language="JavaScript" src="../js/jquery-1.8.3.js"></script>
+<script>
+    function login() {
+        var loginName = document.getElementById('loginName').value;
+        var password = document.getElementById('password').value;
+        var requestData = {'loginName': loginName, 'password': password};
+        var requestData1 = JSON.stringify(requestData);
+        $.ajax({
+            url: "http://localhost:8084/login/login",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Content-Type", "application/json");
+            },
+            data: requestData1,
+            dataType: "json",
+            type: "POST",
+            success: function (result) {
+                var re1 = JSON.stringify(result);  //将json对象转换为字符串
+                var re2 = eval("("+re1+")");    //解析JSON
+                window.location.href = 'http://localhost:8084/html/msg.html?id=' +re2.id+'&name='+re2.userName;
+            }
+        })
+    }
+</script>
+</html>
