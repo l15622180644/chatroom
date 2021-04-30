@@ -7,10 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>msg</title>
 </head>
+<style>
+    span{
+        color: red;
+    }
+</style>
 <body>
 <h1>欢迎进入信箱</h1>
 userID:<span id="id"></span>&nbsp;&nbsp;&nbsp;&nbsp;userName:<span id="name"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;未读信息：&nbsp;&nbsp;<span id="notRead"></span>&nbsp;&nbsp;条
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="goChat()">聊天室</a>
 <br>
 <br>
 <h4>消息记录</h4>
@@ -38,7 +44,8 @@ userID:<span id="id"></span>&nbsp;&nbsp;&nbsp;&nbsp;userName:<span id="name"></s
         stompClient.subscribe("/user/" + id + "/alone/msg", function (result) {
             var re = JSON.stringify(result);
             var re1 = eval('(' + re + ')');
-            $('#msgDiv').append("<span>信息ID：" + re1.body + "</span><br>")
+            var body = JSON.parse(re1.body);
+            $('#msgDiv').append("<span>信息ID：" + body.id + "</span><br>");
             var notRead = parseInt($('#notRead').text())+1;
             $('#notRead').text(notRead);
         })
@@ -109,6 +116,12 @@ userID:<span id="id"></span>&nbsp;&nbsp;&nbsp;&nbsp;userName:<span id="name"></s
                 $('#notRead').text(re1.length);
             }
         })
+    }
+
+    function goChat() {
+        var id = getUrlParam('id');
+        var name = getUrlParam('name');
+        window.location.href = 'http://localhost:8084/html/chat.html?id='+id+'&name='+name;
     }
 
 </script>

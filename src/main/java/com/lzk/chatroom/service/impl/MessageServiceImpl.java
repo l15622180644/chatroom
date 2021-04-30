@@ -1,6 +1,7 @@
 package com.lzk.chatroom.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lzk.chatroom.entity.Login;
 import com.lzk.chatroom.entity.Message;
@@ -46,5 +47,20 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
                 .eq(Message::getRecipient, id)
                 .orderByDesc(Message::getCreateTime);
         return list(wrapper);
+    }
+
+    @Override
+    public List<Message> selectByHistory(Integer sendId, Integer recipientId) {
+        LambdaQueryWrapper<Message> wrapper = new LambdaQueryWrapper<>();
+        wrapper.or(queryWrapper->queryWrapper.eq(Message::getSender,sendId).eq(Message::getRecipient,recipientId))
+                .or(queryWrapper->queryWrapper.eq(Message::getSender,recipientId).eq(Message::getRecipient,sendId))
+                .orderByAsc(Message::getCreateTime);
+        return list(wrapper);
+    }
+
+    @Override
+    public void modify(List<Message> message) {
+        message.forEach(re->re.setRead(1));
+        updateBatchById(message);
     }
 }

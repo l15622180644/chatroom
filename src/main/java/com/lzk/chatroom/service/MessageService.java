@@ -18,4 +18,8 @@ public interface MessageService extends IService<Message> {
     void sendPM(Message message);
 
     List<Message> selectByType(Integer type,Integer id);
+
+    List<Message> selectByHistory(Integer sendId,Integer recipientId);
+
+    void modify(List<Message> message);
 }

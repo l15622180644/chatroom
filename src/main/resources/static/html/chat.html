@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wechat</title>
+</head>
+<style type="text/css">
+    .mytable {
+        height: 800px;
+        width: 1250px;
+        border-color: snow;
+        border-width: 1px;
+        table-layout: fixed;
+        /*水平垂直居中*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .td1 {
+        width: 300px;
+        height: 790px;
+    }
+
+    .div1 {
+        overflow-y: hidden;
+        width: 300px;
+        height: 780px;
+    }
+
+    .div2 {
+        /*border: 2px red solid;*/
+        width: 300px;
+        height: 90px;
+        position: relative;
+        left: -40px;
+        background-color: white;
+    }
+
+    /*.div3 {
+        border: red solid 1px;
+        height: 40px;
+        width: 150px;
+        position: relative;
+        left: 1410px;
+        top: 750px;
+        right: 0;
+        bottom: 0;
+        !*div置于最上层*!
+        z-index: 999;
+        text-align: center;
+        display: table-cell;
+    }*/
+
+    .div3 {
+        height: 30px;
+        width: 30px;
+        /*border: blue solid 1px;*/
+        background-color: red;
+        text-align: center;
+        border-radius: 50%;
+        position: absolute;
+        left: 60px;
+        bottom: 0px;
+        /*display: none;*/
+    }
+
+    .div4 {
+        height: 480px;
+        width: 850px;
+        /*border: red solid 1px;*/
+        position: relative;
+        left: 6px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .div5 {
+        /*border: greenyellow 1px solid;*/
+        width: 845px;
+        height: 70px;
+    }
+
+    .div6 {
+        height: 50px;
+        width: auto;
+        display: inline-block;
+        /*border: red solid 1px;*/
+        background-color: lightskyblue;
+        border-radius: 15px;
+        position: relative;
+        top: -23px;
+        left: 15px;
+    }
+
+    .div7 {
+        /*border: greenyellow 1px solid;*/
+        width: 845px;
+        height: 70px;
+        text-align: right;
+    }
+
+    .div8 {
+        height: 50px;
+        width: auto;
+        display: inline-block;
+        background-color: #ef8201;
+        border-radius: 15px;
+        position: relative;
+        top: 10px;
+        right: 37px;
+    }
+
+    .div9 {
+        height: 25px;
+        width: 25px;
+        background-color: limegreen;
+        /*background-color: red;*/
+        position: absolute;
+        bottom: 2.5px;
+        left: 150px;
+        border-radius: 50%;
+        /*display: none;*/
+    }
+
+    .div10 {
+        height: 15px;
+        width: 15px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .div11 {
+        /*border: limegreen 1px solid;*/
+        background-color: lightskyblue;
+        height: 36px;
+        width: 200px;
+        position: relative;
+        left: 380px;
+        text-align: center;
+        display: none;
+    }
+
+    .ul1 {
+        list-style-type: none;
+    }
+
+    .headPic1 {
+        width: 85px;
+        height: 85px;
+        /*垂直居中*/
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        user-select: none; /*禁止选中*/
+    }
+
+    .headPic2 {
+        user-select: none;
+        height: 50px;
+        width: 50px;
+        position: relative;
+        top: 10px;
+        left: 5px;
+    }
+
+    .headPic3 {
+        user-select: none;
+        height: 50px;
+        width: 50px;
+        float: right;
+        position: relative;
+        top: 10px;
+        right: 25px;
+    }
+
+    .nickName1 {
+        font-size: 30px;
+        font-weight: normal;
+        font-family: 华文细黑;
+        color: black;
+        position: relative;
+        left: 90px;
+        top: -2px;
+        user-select: none;
+    }
+
+    .nickName2 {
+        font-family: 华文细黑;
+        font-size: 40px;
+        position: relative;
+        left: 20px;
+        user-select: none;
+    }
+
+    .button1 {
+        height: 40px;
+        width: 70px;
+        border: none;
+        outline: none;
+        background-color: lightgrey;
+        font-size: 20px;
+        border-radius: 18px;
+        position: relative;
+        left: 760px;
+        user-select: none;
+    }
+
+    .text1 {
+        border: 0px solid red;
+        outline: none;
+        height: 120px;
+        width: 850px;
+        position: relative;
+        left: 4px;
+        font-size: 30px;
+    }
+
+    .span1 {
+        position: relative;
+        top: 13px;
+    }
+
+    .span2 {
+        line-height: 30px;
+        color: white;
+        font-size: 15px;
+        user-select: none;
+    }
+
+    .span3 {
+        color: red;
+        position: absolute;
+        line-height: 70px;
+    }
+
+    .span4 {
+        line-height: 36px;
+        color: royalblue;
+    }
+
+</style>
+<body>
+<table class="mytable" border="1" cellspacing="0">
+    <tr>
+        <td rowspan="5" width="70px">功能</td>
+        <td rowspan="5" class="td1">
+            <div id="div1" class="div1" onmouseover="changeOverflow('div1','auto')"
+                 onmouseout="changeOverflow('div1','hidden')">
+                <ul id="ul1" class="ul1">
+                    <!--<li>
+                        <div id="div2" class="div2" onmouseover="changeBackgroundColor('div2','lightgrey')"
+                             onmouseout="changeBackgroundColor('div2','white')" ondragstart="return false;">
+                            <img src="../img/微信图片_20210421172512.jpg" class="headPic1" ondragstart="return false;">
+                            &lt;!&ndash;禁止拖动图片&ndash;&gt;
+                            <span class="nickName1" ondragstart="return false;">cc</span>
+                            <div class="div3"><span class="span2">6</span></div>
+                            <div class="div9">
+                                <div class="div10"></div>
+                            </div>
+                        </div>
+                    </li>-->
+                </ul>
+            </div>
+        </td>
+        <td height="60px">    <!--当前聊天对象-->
+            <span id="friendName" class="nickName2" ondragstart="return false;"></span>
+            <input id="friendId" type="hidden" value="">
+        </td>
+    </tr>
+    <tr>
+        <td height="500px">
+            <div id="div4" class="div4">
+                <!--<div class="div5">
+                    <img src="../img/微信图片_20210421172512.jpg" class="headPic2" ondragstart="return false;">
+                    <div class="div6">
+                        <span class="span1">&nbsp;&nbsp;gghgg&nbsp;&nbsp;</span>
+                    </div>
+                </div>
+                <div class="div7">
+                    <img src="../img/微信图片_20210421172512.jpg" class="headPic3" ondragstart="return false;">
+                    <div class="div8">
+                        <span class="span1">&nbsp;&nbsp;jkjkj&nbsp;&nbsp;</span>
+                    </div>
+                </div>
+                <div class="div5">
+                    <img src="../img/微信图片_20210421172512.jpg" class="headPic2" ondragstart="return false;">
+                    <div class="div6">
+                        <span class="span1">&nbsp;&nbsp;gghgg&nbsp;&nbsp;</span>
+                    </div>
+                </div>
+                <div class="div5">
+                    <img src="../img/微信图片_20210421172512.jpg" class="headPic2" ondragstart="return false;">
+                    <div class="div6">
+                        <span class="span1">&nbsp;&nbsp;gghgg&nbsp;&nbsp;</span>
+                    </div>
+                </div>
+                <div class="div7">
+                    <img src="../img/微信图片_20210421172512.jpg" class="headPic3" ondragstart="return false;">
+                    <div class="div8">
+                        <span class="span1">&nbsp;&nbsp;jkjkj&nbsp;&nbsp;</span>
+                    </div>
+                    <span style="right: 150px" class="span3">未读</span>
+                </div>-->
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td height="40px">
+            <div id="div11" class="div11"
+                 onmouseout="changeBackgroundColor('div11','','default')"
+                 onmouseover="changeBackgroundColor('div11','','pointer')"
+                 onclick="jump()">
+                <span class="span4">你有未读消息</span>
+                <input id="weidu" type="hidden" value="">   <!--记录离顶部的距离-->
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <textarea id="text1" class="text1" style="resize: none"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td height="50px">
+            <button id="button1" class="button1"
+                    onmouseout="changeBackgroundColor('button1','lightgrey','default')"
+                    onmouseover="changeBackgroundColor('button1','dodgerblue','pointer')"
+                    onclick="sendMsg()">发送
+            </button>
+        </td>
+    </tr>
+</table>
+<input type="hidden" id="uid" value="">
+<input type="hidden" id="userName" value="">
+</body>
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/sockjs.min.js"></script>
+<script src="../js/stomp.min.js"></script>
+<script type="text/javascript">
+    //连接端点
+    var socket = new SockJS("http://localhost:8084/endpoint1");
+    //获取客户端
+    var stompClient = Stomp.over(socket);
+    //建立连接
+    stompClient.connect({}, function () {
+        //获取当前登录用户id
+        var uid = $('#uid').val();
+        //订阅 登录信息
+        stompClient.subscribe("/broadcast/loginMsg", function (result) {
+            var re1 = JSON.stringify(result);
+            var re2 = JSON.parse(re1);
+            var re3 = re2.body;
+            var user = JSON.parse(re3);   //需要再解析body对象
+            var ul1 = $('.ul1');
+            var li = document.getElementById(user.id);
+            var divs = li.getElementsByTagName('div');
+            for (var i = 0; i < divs.length; i++) {
+                var className = divs[i].className;
+                if (className == 'div9' && user.type == 0) {  //登录展示
+                    divs[i].style.display = 'inline';
+                } else if (className == 'div9' && user.type == 1) {   //登出隐藏
+                    divs[i].style.display = 'none';
+                }
+            }
+        });
+        //订阅 个人聊天信息
+        stompClient.subscribe("/user/" + uid + "/alone/msg", function (result) {
+            var re1 = JSON.stringify(result);
+            var re2 = JSON.parse(re1);
+            var message = JSON.parse(re2.body);
+            var friendId = $('#friendId').val();
+            if (message.sender == friendId) {
+                var div = '<div class=\"div5\">' +
+                    '<img src=\"../img/微信图片_20210421172512.jpg\" class=\"headPic2\" ondragstart=\"return false;\">' +
+                    '<div class=\"div6\">' +
+                    '<span class=\"span1\">&nbsp;&nbsp;' + message.content + '&nbsp;&nbsp;</span>' +
+                    '</div>' +
+                    '</div>';
+                $('.div4').append(div);
+                var div4 = $('#div4');
+                div4[0].scrollTop = div4[0].scrollHeight;   //滚动条保持最底部
+                //修改信息为已读状态
+                var list = [message];
+                $.ajax({
+                    url: 'http://localhost:8084/updateMsg',
+                    data: JSON.stringify(list),
+                    dataType: 'json',
+                    type: 'POST',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Content-Type', 'application/json')
+                    },
+                    success: function (result) {
+                    }
+                });
+            } else {
+                var li = document.getElementById(message.sender);
+                var divs = li.getElementsByTagName('div');
+                for (var i = 0; i < divs.length; i++) {
+                    if (divs[i].className == 'div3') {
+                        var spans = divs[i].getElementsByTagName('span');
+                        var readCount = parseInt(spans[0].innerText);
+                        if (readCount > 99) {
+                            spans[0].innerText = '99+';
+                        } else {
+                            spans[0].innerText = readCount + 1;
+                        }
+                        divs[i].style.display = 'inline';
+                    }
+                }
+            }
+        });
+        //订阅 已读、未读消息状态
+        stompClient.subscribe("/user/" + uid + "/alone/read", function (result) {
+            var re1 = JSON.stringify(result);
+            var re2 = JSON.parse(re1);
+            var list = JSON.parse(re2.body);
+            for (var i = 0; i < list.length; i++) {
+                var div7 = document.getElementById(list[i].id);
+                var span3 = div7.getElementsByTagName('span')[1];
+                span3.style.color = 'darkgray';
+                span3.innerText = '已读';
+            }
+        })
+    });
+
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+
+    $(document).ready(function () {
+        var id = getUrlParam('id');
+        var name = getUrlParam('name');
+        $('#uid').val(id);
+        $('#userName').val(name);
+        $.ajax({
+            url: 'http://localhost:8084/login/getAll?id=' + id,
+            type: 'GET',
+            success: function (result) {
+                var re1 = JSON.stringify(result);
+                var list = JSON.parse(re1);
+                for (var i = 0; i < list.length; i++) {
+                    var user = list[i];
+                    if (user.image != null) {
+                        var image = user.image.replace("/", "%2F");
+                    }
+                    var li = "<li id=\'" + user.id + "\'><div id=\'" + "dd" + user.id + "\' class=\'div2\' onmouseover=\"changeBackgroundColor(\'" + "dd" + user.id + "\',\'lightgrey\')\" onmouseout=\"changeBackgroundColor(\'" + "dd" + user.id + "\',\'white\')\" onclick=\"getHistoryMsg(" + user.id + "," + "\'" + user.userName + "\'" + ")\" ondragstart=\"return false;\">" +
+                        "<img src=\'" + "http://localhost:8084/api/FmsService/downloadFile?filePath=" + image + "&isOnLine=true" + "\'" + "class=\"headPic1\" ondragstart=\"return false;\">" +
+                        "<span class=\"nickName1\" ondragstart=\"return false;\">" + user.userName + "</span>" +
+                        "<div style=\'display: " + (user.readCount > 0 ? 'inline' : 'none') + "\' class=\"div3\"><span class=\"span2\">" + user.readCount + "</span></div>" +
+                        "<div " + ((user.type != 0) ? "style=\"display: none\"" : "") + " class=\"div9\"><div class=\"div10\"></div></div>" +
+                        "</div></li>";
+                    $('.ul1').append(li);
+                }
+            }
+        });
+    });
+
+
+    //-------------------------------------------------------------------------------------------------------
+
+    function changeOverflow(data1, data2) {
+        var obj = document.getElementById(data1);
+        obj.style.overflowY = data2;
+    }
+
+    function changeBackgroundColor(data1, data2, data3) {
+        var obj = document.getElementById(data1);
+        obj.style.backgroundColor = data2;
+        if (data1 == 'button1' || data1 == 'div11') {
+            obj.style.cursor = data3;    //变换鼠标形状
+        }
+    }
+
+    function sendMsg() {
+        var friendId = $('#friendId').val();
+        var uid = $('#uid').val();
+        if (uid == null || uid == "") {
+            alert('你id呢？？？')
+        }
+        if (friendId == null || friendId == "") {
+            alert('你还没有聊天对象啊喂')
+        }
+        ;
+        var text = $('.text1').val();
+        $('.text1').val('');
+        if (text == null) {
+            alert('聊天内容呢？？？')
+        }
+        var data = {'sender': uid, 'recipient': friendId, 'content': text};
+        var json = JSON.stringify(data);
+        $.ajax({
+            url: 'http://localhost:8084/sendPM',
+            data: json,
+            dataType: 'json',
+            type: 'POST',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+            },
+            success: function (result) {
+                var re1 = JSON.stringify(result);
+                var re2 = JSON.parse(re1);
+                if (re2 != null) {
+                    var div = '<div id=\"' + re2.id + '\" class=\"div7\">' +
+                        '<img src=\"../img/微信图片_20210421172512.jpg\" class=\"headPic3\" ondragstart=\"return false;\">' +
+                        '<div class=\"div8\">' +
+                        '<span class=\"span1\">&nbsp;&nbsp;' + re2.content + '&nbsp;&nbsp;</span>' +
+                        /*'<input id="msgId" type="hidden" value="' + re2.id + '">' +*/
+                        '</div>' +
+                        '</div>';
+                    $('.div4').append(div);
+                    var div7 = document.getElementById(re2.id);
+                    var div8 = div7.getElementsByTagName('div');
+                    var width = div8[0].offsetWidth;    //获取宽度
+                    var span3 = '<span style="right: ' + (55 + width + 45) + 'px;" class="span3">未读</span>';
+                    $('#' + re2.id).append(span3);
+                    var div4 = $('#div4');
+                    div4[0].scrollTop = div4[0].scrollHeight;   //滚动条保持最底部
+                }
+            }
+        })
+    }
+
+    function getHistoryMsg(data1, data2) {
+        $('#weidu').val('');
+        document.getElementById('div11').style.display = 'none';
+        var li = document.getElementById(data1);
+        var vids = li.getElementsByTagName('div');
+        for (var i = 0; i < vids.length; i++) {
+            if (vids[i].className == 'div3') {
+                vids[i].style.display = 'none';
+                var spans = vids[i].getElementsByTagName('span');
+                spans[0].innerText = '0';
+            }
+        }
+        $('#friendName').text(data2);
+        $('#friendId').val(data1);
+        $('.div4').html('');
+        var sendId = $('#uid').val();
+        var recipientId = data1;
+        $.ajax({
+            url: 'http://localhost:8084/getHistory?sendId=' + sendId + '&recipientId=' + recipientId,
+            data: '',
+            dataType: '',
+            type: 'GET',
+            beforeSend: function (xhr) {
+            },
+            success: function (result) {
+                var re1 = JSON.stringify(result);
+                var re2 = JSON.parse(re1);
+                var flag = true;
+                for (var i = 0; i < re2.length; i++) {
+                    var msg = re2[i];
+                    if (msg.sender == sendId) {
+                        var div = '<div id="' + msg.id + '" class=\"div7\">' +
+                            '<img src=\"../img/微信图片_20210421172512.jpg\" class=\"headPic3\" ondragstart=\"return false;\">' +
+                            '<div class=\"div8\">' +
+                            '<span class=\"span1\">&nbsp;&nbsp;' + msg.content + '&nbsp;&nbsp;</span>' +
+                            '</div>' +
+                            '</div>';
+                        $('.div4').append(div);
+                        var div7 = document.getElementById(msg.id);
+                        var div8 = div7.getElementsByTagName('div');
+                        var width = div8[0].offsetWidth;   //获取div宽度
+                        var span3 = '<span style="right: ' + (55 + width + 45) + 'px;color: ' + (msg.read == 0 ? "red" : "darkgray") + '" class="span3">' + (msg.read == 0 ? "未读" : "已读") + '</span>';
+                        $('#' + msg.id).append(span3);
+                    } else {
+                        var div = '<div id="' + msg.id + '" class=\"div5\">' +
+                            '<img src=\"../img/微信图片_20210421172512.jpg\" class=\"headPic2\" ondragstart=\"return false;\">' +
+                            '<div class=\"div6\">' +
+                            '<span class=\"span1\">&nbsp;&nbsp;' + msg.content + '&nbsp;&nbsp;</span>' +
+                            '</div>' +
+                            '</div>';
+                        $('.div4').append(div);
+                        if (msg.read == 0 && flag) {   //如果对方消息第一次出现未读
+                            var div5 = $('#' + msg.id);
+                            $('#weidu').val(div5.position().top);
+                            flag = false;
+                        }
+                    }
+                }
+                var div4 = $('#div4');
+                div4[0].scrollTop = div4[0].scrollHeight;     //滚动条保持最底部
+                if (flag == false) {
+                    document.getElementById('div11').style.display = 'inline';
+                }
+            }
+        })
+    }
+
+    var textarea = document.getElementById('text1');
+    textarea.addEventListener('keydown', function (event) {    //键盘事件
+        if (event.keyCode == 13) {   //enter键
+            event.preventDefault();   //禁用enter换行
+            document.getElementById('button1').click();
+        }
+    });
+
+    function jump() {
+        var distance = $('#weidu').val();
+        $('#div4').scrollTop(distance);
+        $('#weidu').val('');
+        $('#div11').css('display', 'none');
+    }
+
+
+</script>
+</html>

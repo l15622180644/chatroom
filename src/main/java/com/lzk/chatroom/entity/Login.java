@@ -1,5 +1,6 @@
 package com.lzk.chatroom.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,4 +19,10 @@ public class Login implements Serializable {
     private String userName;
     private String loginName;
     private String password;
+    @TableField(exist = false)
+    private String image;
+    @TableField(exist = false)
+    private Integer type;
+    @TableField(exist = false)
+    private int readCount;
 }
